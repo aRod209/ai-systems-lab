@@ -125,9 +125,9 @@ class TestResearchPaperService:
 
     def create_paper_data(self):
         return {
-                'paper_name': 'Test Paper',
-                'authors': ['Test Author'],
-                'pages': '1',
-                'subfields': ['Machine Learning'],
-                'answer': 'Test Answer'
-            }
+            'paper_name': 'Test Paper',
+            'authors': ['Test Author'],
+            'pages': '1',
+            'subfields': ['Machine Learning'],
+            'answer': 'Test Answer'
+        }
