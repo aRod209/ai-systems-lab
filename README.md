@@ -75,7 +75,7 @@ Install with the `[dev]` extra shown above, then run the tests from the project 
 python -m pytest -q
 ```
 
-The current tests cover the `ResearchPaper` model; they do not yet cover the CLI, service, or live Gemini requests.
+The unit tests cover the `ResearchPaper` model, `ResearchPaperService`, `Cli`, the `main()` entry point, `GeminiClient`, and `Settings`. Gemini requests are mocked, and settings tests use an isolated environment and temporary `.env` files; the suite does not make live API requests or require a real API key.
 
 ## 🗂️ Project structure
 
