@@ -77,6 +77,8 @@ python -m pytest -q
 
 The unit tests cover the `ResearchPaper` model, `ResearchPaperService`, `Cli`, the `main()` entry point, `GeminiClient`, and `Settings`. Gemini requests are mocked, and settings tests use an isolated environment and temporary `.env` files; the suite does not make live API requests or require a real API key.
 
+For live prompt results and separate assessments of response format and factual claims, see the [manual evaluation](docs/manual_evaluation.md). These runs are not part of the automated test suite.
+
 ## 🗂️ Project structure
 
 | Path | Purpose |
@@ -88,9 +90,12 @@ The unit tests cover the `ResearchPaper` model, `ResearchPaperService`, `Cli`, t
 | `src/ai_systems_lab/research_paper_service.py` | Response validation and decoding |
 | `src/ai_systems_lab/models/research_paper.py` | Structured response model |
 | `tests/` | Automated tests |
+| `docs/manual_evaluation.md` | Live prompt results and assessments |
 
 ## ⚠️ Current limitations
 
 - The app accepts a text prompt, not a paper file or a verified paper source. Name the paper in your prompt if relevant.
+- The response schema describes one paper. For requests about multiple papers, the model may list others in `answer`, but `paper_name`, `authors`, and `pages` still describe only one paper.
 - A response matching the JSON schema is **not** proof that its claims, metadata, or citations are accurate. Verify research claims against the original paper.
+- Live requests can time out or fail with an API error; a failed request does not provide a model answer to evaluate.
 - There is no built-in paper retrieval or document-grounded answering yet.
