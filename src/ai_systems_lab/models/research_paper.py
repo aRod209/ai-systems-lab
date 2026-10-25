@@ -10,3 +10,4 @@ class ResearchPaper(BaseModel):
     pages: str = Field(description='Number of pages.')
     subfields: list[str] = Field(description='Sub-feilds of AI.')
     answer: str | None = Field(default=None, description='Answer to specific question about research paper.')
+    confidence: float = Field(ge=0.0, le=1.0, description='How confident the model is in the answer it generated.')

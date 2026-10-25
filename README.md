@@ -53,7 +53,7 @@ The app looks for `.env` relative to the current working directory, so run it fr
 
 Run `ai-systems-lab` and enter a nonempty prompt when asked. For example: `What is the main contribution of the paper "Attention Is All You Need"?`
 
-The response is printed as JSON with the fields `paper_name`, `authors`, `pages`, `subfields`, and `answer`. Here is an **illustrative** response, not an actual API result:
+The response is printed as JSON with the fields `paper_name`, `authors`, `pages`, `subfields`, `answer`, and `confidence`. Here is an **illustrative** response, not an actual API result:
 
 ```json
 {
@@ -61,7 +61,8 @@ The response is printed as JSON with the fields `paper_name`, `authors`, `pages`
   "authors": ["Example Author"],
   "pages": "12",
   "subfields": ["Machine Learning"],
-  "answer": "An illustrative answer."
+  "answer": "An illustrative answer.",
+  "confidence": 0.8
 }
 ```
 

@@ -12,7 +12,8 @@ class TestResearchPaper:
             'authors': ['Test Author'],
             'pages': '1',
             'subfields': ['Machine Learning'],
-            'answer': 'Test Answer'
+            'answer': 'Test Answer',
+            'confidence': 1.0
         }
 
         # act
@@ -28,7 +29,8 @@ class TestResearchPaper:
             'authors': ['Test Author'],
             'pages': '1',
             'subfields': ['Machine Learning'],
-            'answer': None
+            'answer': None,
+            'confidence': 0.5
         }
 
         # act
@@ -39,7 +41,7 @@ class TestResearchPaper:
 
     @pytest.mark.parametrize(
             'missing_field',
-            ['paper_name', 'authors', 'pages', 'subfields']
+            ['paper_name', 'authors', 'pages', 'subfields', 'confidence']
     )
     def test_rejects_input_when_required_field_is_missing(self, missing_field: str) -> None:
         # arrange
@@ -48,7 +50,8 @@ class TestResearchPaper:
                     'authors': ['Test Author'],
                     'pages': '1',
                     'subfields': ['Machine Learning'],
-                    'answer': 'Test Answer'
+                    'answer': 'Test Answer',
+                    'confidence': 0.5
                 }
         paper_data.pop(missing_field)
 
@@ -64,7 +67,7 @@ class TestResearchPaper:
 
     @pytest.mark.parametrize(
         "field_name",
-        ["paper_name", "authors", "pages", "subfields"]
+        ["paper_name", "authors", "pages", "subfields", 'confidence']
     )
     def test_rejects_input_when_required_field_is_none(self, field_name) -> None:
         # arrange
@@ -73,7 +76,8 @@ class TestResearchPaper:
             'authors': ['Test Author'],
             'pages': '1',
             'subfields': ['Machine Learning'],
-            'answer': 'Test Answer'
+            'answer': 'Test Answer',
+            'confidence': 0.5
         }
         paper_data[field_name] = None
 
@@ -94,6 +98,8 @@ class TestResearchPaper:
             ("pages", 10, 'string_type'),
             ("subfields", "Machine Learning", 'list_type'),
             ("answer", 123, 'string_type'),
+            ("confidence", -1.0, 'greater_than_equal'),
+            ("confidence", 2.0, "less_than_equal")
         ],
     )
     def test_rejects_input_when_field_has_invalid_type(

@@ -129,5 +129,6 @@ class TestResearchPaperService:
             'authors': ['Test Author'],
             'pages': '1',
             'subfields': ['Machine Learning'],
-            'answer': 'Test Answer'
+            'answer': 'Test Answer',
+            'confidence': 0.5
         }
